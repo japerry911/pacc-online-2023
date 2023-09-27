@@ -1,0 +1,33 @@
+# Welcome to your prefect.yaml file! You can use this file for storing and managing
+# configuration for deploying your flows. We recommend committing this file to source
+# control along with your flow code.
+
+# Generic metadata about this project
+name: prefect-certification-course
+prefect-version: 2.13.2
+
+# build section allows you to manage and build docker images
+build: null
+
+# push section allows you to manage if and how this project is uploaded to remote locations
+push: null
+
+# pull section allows you to provide instructions for cloning this project in remote locations
+pull:
+- prefect.deployments.steps.git_clone:
+    repository: git@github.com:japerry911/pacc-online-2023.git
+    branch: main
+
+# the deployments section allows you to provide configuration for deploying flows
+deployments:
+- name: test-cli-pipe
+  version: null
+  tags: []
+  description: null
+  entrypoint: 104/flows.py:pipe
+  parameters: {}
+  work_pool:
+    name: test-cli
+    work_queue_name: null
+    job_variables: {}
+  schedule: null
